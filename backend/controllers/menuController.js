@@ -14,14 +14,15 @@ exports.getMenu = async (req, res) => {
 // Add a new menu item
 exports.addMenuItem = async (req, res) => {
   try {
-    const { name, price, category, description } = req.body;
+    const { name, price, category, description, image } = req.body;
     
     const newItem = new MenuItem({
       ownerId: req.user.id,
       name,
-      price,
+      price : Number(price),
       category,
-      description
+      description,
+      image
     });
 
     await newItem.save();

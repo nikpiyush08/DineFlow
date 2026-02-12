@@ -17,7 +17,7 @@ export default function MenuManager() {
   const fetchMenu = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('https://dineflow-backend-h5hw.onrender.com/api/menu',{
+      const response = await axios.get('https://dineflow-backend-h5hw.onrender.com/api/menu', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setMenuItems(response.data);
@@ -75,12 +75,23 @@ export default function MenuManager() {
     }
   };
 
-  const handleFileChange = (e) => {
+  const handleFileChange = async (e) => {
     const file = e.target.files[0];
-    if (file) {
-      // Create a temporary URL to preview the image
-      const previewUrl = URL.createObjectURL(file);
-      setFormData({ ...formData, image: previewUrl });
+    if (!file) return;
+
+    const data = new FormData();
+    data.append('file', file);
+    data.append('upload_preset', 'YOUR_CLOUDINARY_PRESET'); // You get this from Cloudinary settings
+
+    try {
+      const res = await axios.post(
+        'https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/image/upload',
+        data
+      );
+      // This gives you a real 'https://...' URL
+      setFormData({ ...formData, image: res.data.secure_url });
+    } catch (err) {
+      alert('Image upload failed');
     }
   };
 
