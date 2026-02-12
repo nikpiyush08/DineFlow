@@ -33,8 +33,8 @@ export default function Dashboard() {
 
       // Fetch Stats AND Orders in parallel
       const [statsRes, ordersRes] = await Promise.all([
-        axios.get('https://dashboard.render.com/web/srv-d66sci94tr6s73ai45a0/api/orders/stats', config),
-        axios.get('https://dashboard.render.com/web/srv-d66sci94tr6s73ai45a0/api/orders/live', config)
+        axios.get('https://dineflow-backend-h5hw.onrender.com/api/orders/stats', config),
+        axios.get('https://dineflow-backend-h5hw.onrender.com/api/orders/live', config)
       ]);
 
       if (statsRes.data) setStats(statsRes.data);
@@ -72,7 +72,7 @@ export default function Dashboard() {
   const updateStatus = async (orderId, newStatus) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`https://dashboard.render.com/web/srv-d66sci94tr6s73ai45a0/api/orders/${orderId}/status`,
+      await axios.put(`https://dineflow-backend-h5hw.onrender.com/api/orders/${orderId}/status`,
         { status: newStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );

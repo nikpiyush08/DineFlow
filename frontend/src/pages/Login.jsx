@@ -11,7 +11,7 @@ export default function Login() {
     e.preventDefault();
     try {
       // Calling our Node.js backend
-      const response = await axios.post('https://dashboard.render.com/web/srv-d66sci94tr6s73ai45a0/api/auth/login', {
+      const response = await axios.post('https://dineflow-backend-h5hw.onrender.com/api/auth/login', {
         email,
         password,
       });
@@ -29,7 +29,7 @@ export default function Login() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="p-8 bg-white rounded-lg shadow-md w-96">
-        <h2 className="mb-6 text-2xl font-bold text-center text-gray-800">MenuHub Login</h2>
+        <h2 className="mb-6 text-2xl font-bold text-center text-gray-800">DinFlow Login</h2>
         <form onSubmit={handleLogin}>
           <div className="mb-4">
             <label className="block mb-2 text-sm text-gray-600">Email</label>

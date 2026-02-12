@@ -1,6 +1,5 @@
 import { useState } from 'react';
-// import axios from 'axios';
-import API from '../api';
+import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 
 export default function Register() {
@@ -12,12 +11,11 @@ export default function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      // await axios.post('https://dineflow-backend-h5hw.onrender.com/api/auth/register', {
-      //   name,
-      //   email,
-      //   password,
-      // });
-      await API.post('/auth/register', { name, email, password });
+      await axios.post('https://dineflow-backend-h5hw.onrender.com/api/auth/register', {
+        name,
+        email,
+        password,
+      });
 
       alert('Registration Successful! Please log in.');
       navigate('/login'); // Send them to login after creating the account

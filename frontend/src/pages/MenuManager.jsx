@@ -17,7 +17,7 @@ export default function MenuManager() {
   const fetchMenu = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('https://dashboard.render.com/web/srv-d66sci94tr6s73ai45a0/api/menu',{
+      const response = await axios.get('https://dineflow-backend-h5hw.onrender.com/api/menu',{
         headers: { Authorization: `Bearer ${token}` }
       });
       setMenuItems(response.data);
@@ -58,12 +58,12 @@ export default function MenuManager() {
 
       if (editingId) {
         // We are EDITING an existing item
-        await axios.put(`https://dashboard.render.com/web/srv-d66sci94tr6s73ai45a0/api/menu/${editingId}`, formData, {
+        await axios.put(`https://dineflow-backend-h5hw.onrender.com/api/menu/${editingId}`, formData, {
           headers: { Authorization: `Bearer ${token}` }
         });
       } else {
         // We are ADDING a new item
-        await axios.post('https://dashboard.render.com/web/srv-d66sci94tr6s73ai45a0/api/menu', formData, {
+        await axios.post('https://dineflow-backend-h5hw.onrender.com/api/menu', formData, {
           headers: { Authorization: `Bearer ${token}` }
         });
       }
@@ -88,7 +88,7 @@ export default function MenuManager() {
     if (!window.confirm('Are you sure you want to delete this item?')) return;
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`https://dashboard.render.com/web/srv-d66sci94tr6s73ai45a0/api/menu/${id}`, {
+      await axios.delete(`https://dineflow-backend-h5hw.onrender.com/api/menu/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchMenu();

@@ -13,8 +13,8 @@ export default function LiveOrders() {
       const config = { headers: { Authorization: `Bearer ${token}` } };
 
       const [ordersRes, statsRes] = await Promise.all([
-        axios.get('https://dashboard.render.com/web/srv-d66sci94tr6s73ai45a0/api/orders/live', config),
-        axios.get('https://dashboard.render.com/web/srv-d66sci94tr6s73ai45a0/api/orders/stats', config) 
+        axios.get('https://dineflow-backend-h5hw.onrender.com/api/orders/live', config),
+        axios.get('https://dineflow-backend-h5hw.onrender.com/api/orders/stats', config)
       ]);
 
       setOrders(ordersRes.data);
@@ -35,7 +35,7 @@ export default function LiveOrders() {
   const updateStatus = async (orderId, newStatus) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`https://dashboard.render.com/web/srv-d66sci94tr6s73ai45a0/api/orders/${orderId}/status`,
+      await axios.put(`https://dineflow-backend-h5hw.onrender.com/api/orders/${orderId}/status`,
         { status: newStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -97,8 +97,8 @@ export default function LiveOrders() {
             <div key={order._id} className="flex flex-col overflow-hidden bg-white border border-gray-200 shadow-lg rounded-2xl">
 
               <div className={`p-4 text-white flex justify-between items-center ${order.status === 'Pending' ? 'bg-amber-500' :
-                  order.status === 'Preparing' ? 'bg-orange-500' :
-                    order.status === 'Ready' ? 'bg-emerald-500' : 'bg-blue-500'
+                order.status === 'Preparing' ? 'bg-orange-500' :
+                  order.status === 'Ready' ? 'bg-emerald-500' : 'bg-blue-500'
                 }`}>
                 <div>
                   <div className="text-2xl font-black text-white">Table {order.tableNumber}</div>
