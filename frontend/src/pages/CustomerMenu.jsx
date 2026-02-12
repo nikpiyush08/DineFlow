@@ -16,7 +16,7 @@ export default function CustomerMenu() {
   useEffect(() => {
     const fetchMenu = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/menu/public/${ownerId}`);
+        const res = await axios.get(`https://dashboard.render.com/web/srv-d66sci94tr6s73ai45a0/api/menu/public/${ownerId}`);
         setMenu(res.data);
       } catch (err) { console.error("Error fetching menu", err); }
     };
@@ -41,7 +41,7 @@ export default function CustomerMenu() {
     e.preventDefault();
     if (!customerName || !tableNumber) return alert("Please enter name and table number");
     try {
-      await axios.post('http://localhost:5000/api/orders/place', {
+      await axios.post('https://dashboard.render.com/web/srv-d66sci94tr6s73ai45a0/api/orders/place', {
         ownerId, customerName, tableNumber, notes, items: cart, totalAmount: cartTotal
       });
       alert("Order placed successfully!");

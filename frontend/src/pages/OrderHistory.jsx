@@ -9,7 +9,7 @@ export default function OrderHistory() {
     const fetchHistory = async () => {
       const token = localStorage.getItem('token');
       try {
-        const res = await axios.get('http://localhost:5000/api/orders/live', { 
+        const res = await axios.get('https://dashboard.render.com/web/srv-d66sci94tr6s73ai45a0/api/orders/live', { 
           headers: { Authorization: `Bearer ${token}` }
         });
         setHistory(res.data);

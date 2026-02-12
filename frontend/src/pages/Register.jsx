@@ -11,7 +11,7 @@ export default function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/auth/register', {
+      await axios.post('https://dashboard.render.com/web/srv-d66sci94tr6s73ai45a0/api/auth/register', {
         name,
         email,
         password,

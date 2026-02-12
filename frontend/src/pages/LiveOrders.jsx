@@ -13,8 +13,8 @@ export default function LiveOrders() {
       const config = { headers: { Authorization: `Bearer ${token}` } };
 
       const [ordersRes, statsRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/orders/live', config),
-        axios.get('http://localhost:5000/api/orders/stats', config) 
+        axios.get('https://dashboard.render.com/web/srv-d66sci94tr6s73ai45a0/api/orders/live', config),
+        axios.get('https://dashboard.render.com/web/srv-d66sci94tr6s73ai45a0/api/orders/stats', config) 
       ]);
 
       setOrders(ordersRes.data);
@@ -35,7 +35,7 @@ export default function LiveOrders() {
   const updateStatus = async (orderId, newStatus) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:5000/api/orders/${orderId}/status`,
+      await axios.put(`https://dashboard.render.com/web/srv-d66sci94tr6s73ai45a0/api/orders/${orderId}/status`,
         { status: newStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );
